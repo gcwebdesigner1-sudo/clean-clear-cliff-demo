@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clean &amp; Clear by Cliff — Professional Window Cleaning | Washington</title>
+  <meta name="description" content="Washington's most trusted window cleaning service. Residential, commercial, and screen washing. 32 years in business. Call (253) 350-0457 for a free quote."/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230ea5e9'/><rect x='7' y='7' width='18' height='18' rx='2' fill='none' stroke='white' stroke-width='2.5'/><line x1='7' y1='13' x2='25' y2='13' stroke='white' stroke-width='2'/><line x1='13' y1='7' x2='13' y2='25' stroke='white' stroke-width='2'/></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --sky:   #0ea5e9;
+      --sky-d: #0284c7;
+      --sky-l: #e0f2fe;
+      --ink:   #0f172a;
+      --muted: #64748b;
+      --bone:  #f8fafc;
+      --white: #ffffff;
+      --gold:  #f59e0b;
+      --border:#e2e8f0;
+      --radius: 12px;
+      --shadow: 0 2px 16px rgba(15,23,42,.08);
+      --shadow-lg: 0 8px 40px rgba(15,23,42,.12);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── INTRO ── */
+    #intro {
+      position: fixed; inset: 0; z-index: 1000;
+      background: var(--white);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+      animation: introFade 0.5s ease 2.4s forwards;
+    }
+    @keyframes introFade { to { opacity: 0; pointer-events: none; visibility: hidden; } }
+    .intro-logo {
+      opacity: 0;
+      animation: logoRise 0.7s cubic-bezier(.22,1,.36,1) 0.3s forwards;
+    }
+    @keyframes logoRise { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    .intro-tagline {
+      font-size: .95rem; font-weight: 500; color: var(--muted); letter-spacing: .08em; text-transform: uppercase;
+      opacity: 0;
+      animation: logoRise 0.6s ease 0.8s forwards;
+    }
+    .intro-bar {
+      width: 0; height: 2px; background: var(--sky); border-radius: 2px;
+      animation: barGrow 1.2s ease 1s forwards;
+    }
+    @keyframes barGrow { to { width: 160px; } }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 900;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-wordmark { display: flex; flex-direction: column; line-height: 1.15; }
+    .nav-wordmark strong { font-size: .9rem; font-weight: 800; color: var(--ink); letter-spacing: -.01em; }
+    .nav-wordmark span { font-size: .7rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { font-size: .875rem; font-weight: 500; color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--sky); }
+    .nav-call {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--sky); color: #fff;
+      font-size: .875rem; font-weight: 700;
+      padding: 8px 18px; border-radius: 50px;
+      transition: background .2s, transform .15s;
+    }
+    .nav-call:hover { background: var(--sky-d); transform: translateY(-1px); }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      nav { padding: 0 20px; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 92vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=85&fit=crop') center/cover no-repeat;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, rgba(15,23,42,.72) 0%, rgba(15,23,42,.35) 60%, rgba(14,165,233,.15) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 680px;
+      padding: 60px 48px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.12); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.2);
+      color: #fff; font-size: .8rem; font-weight: 600;
+      padding: 6px 14px; border-radius: 50px;
+      margin-bottom: 24px;
+      letter-spacing: .04em; text-transform: uppercase;
+    }
+    .hero-badge i { color: var(--gold); }
+    h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 900; line-height: 1.1; color: #fff;
+      margin-bottom: 20px;
+      letter-spacing: -.02em;
+    }
+    h1 em { font-style: normal; color: var(--sky); }
+    .hero-sub {
+      font-size: 1.1rem; font-weight: 400; color: rgba(255,255,255,.8);
+      max-width: 480px; margin-bottom: 36px; line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--sky); color: #fff;
+      font-weight: 700; font-size: 1rem;
+      padding: 14px 28px; border-radius: 50px;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(14,165,233,.4);
+    }
+    .btn-primary:hover { background: var(--sky-d); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(14,165,233,.45); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,.1); backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,.3); color: #fff;
+      font-weight: 600; font-size: 1rem;
+      padding: 14px 28px; border-radius: 50px;
+      transition: background .2s, transform .15s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+    @media (max-width: 600px) {
+      .hero-content { padding: 48px 24px; }
+    }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: .1s !important; }
+    .d2 { transition-delay: .2s !important; }
+    .d3 { transition-delay: .3s !important; }
+    .d4 { transition-delay: .4s !important; }
+
+    /* ── SECTION HELPERS ── */
+    section { padding: 96px 24px; }
+    .container { max-width: 1120px; margin: 0 auto; }
+    .sec-label {
+      display: inline-block;
+      font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--sky); background: var(--sky-l);
+      padding: 4px 12px; border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .sec-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800; line-height: 1.2; letter-spacing: -.02em;
+      color: var(--ink); margin-bottom: 16px;
+    }
+    .sec-sub {
+      font-size: 1.05rem; color: var(--muted); max-width: 520px; line-height: 1.7;
+    }
+
+    /* ── GOOGLE REVIEWS BAND ── */
+    .gmaps-band {
+      background: linear-gradient(135deg, var(--sky-l) 0%, #f0f9ff 100%);
+      border-top: 1px solid #bae6fd; border-bottom: 1px solid #bae6fd;
+      padding: 40px 24px;
+    }
+    .gmaps-inner {
+      max-width: 960px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px; flex-wrap: wrap;
+    }
+    .gmaps-left { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .gmaps-logo-wrap { display: flex; align-items: center; gap: 10px; }
+    .gmaps-logo-wrap svg { flex-shrink: 0; }
+    .gmaps-logo-wrap span { font-size: .85rem; font-weight: 700; color: var(--ink); }
+    .gmaps-divider { width: 1px; height: 40px; background: #93c5fd; }
+    .gmaps-score { display: flex; align-items: center; gap: 10px; }
+    .gmaps-num { font-size: 2.2rem; font-weight: 900; color: var(--ink); line-height: 1; }
+    .gmaps-stars { color: var(--gold); font-size: 1.2rem; display: flex; gap: 2px; }
+    .gmaps-count { font-size: .85rem; color: var(--muted); font-weight: 500; margin-top: 2px; }
+    .gmaps-quote { font-size: .95rem; color: var(--ink); font-weight: 500; font-style: italic; max-width: 340px; line-height: 1.6; }
+    .gmaps-quote span { color: var(--muted); font-style: normal; font-size: .8rem; display: block; margin-top: 4px; }
+    .gmaps-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); border: 1.5px solid var(--sky);
+      color: var(--sky); font-weight: 700; font-size: .9rem;
+      padding: 10px 22px; border-radius: 50px;
+      transition: background .2s, color .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .gmaps-btn:hover { background: var(--sky); color: #fff; transform: translateY(-1px); }
+
+    /* ── STATS ── */
+    .stats-section {
+      background: var(--ink); padding: 64px 24px;
+    }
+    .stats-grid {
+      max-width: 900px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+    }
+    .stat-cell {
+      text-align: center; padding: 32px 16px;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-num {
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--sky); line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label { font-size: .85rem; font-weight: 500; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .06em; }
+    @media (max-width: 600px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); }
+    }
+
+    /* ── SERVICES ── */
+    .services-section { background: var(--bone); }
+    .services-header { max-width: 600px; margin-bottom: 56px; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .svc-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 36px 28px;
+      transition: box-shadow .25s, transform .2s, border-color .2s;
+    }
+    .svc-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: #bae6fd; }
+    .svc-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: var(--sky-l); display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; color: var(--sky); margin-bottom: 20px;
+    }
+    .svc-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+    .svc-desc { font-size: .9rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── ABOUT / CLIFF ── */
+    .about-section { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .about-img-wrap { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; }
+    .about-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .about-img-badge {
+      position: absolute; bottom: 20px; left: 20px;
+      background: var(--white); border-radius: 10px; padding: 12px 16px;
+      display: flex; align-items: center; gap: 12px;
+      box-shadow: var(--shadow-lg);
+    }
+    .about-img-badge .badge-icon { font-size: 1.5rem; color: var(--sky); }
+    .about-img-badge strong { font-size: 1rem; font-weight: 800; display: block; }
+    .about-img-badge span { font-size: .78rem; color: var(--muted); }
+    .about-text { display: flex; flex-direction: column; gap: 20px; }
+    .about-text p { font-size: 1rem; color: var(--muted); line-height: 1.8; }
+    .creds-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+    .cred-chip {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--bone); border: 1px solid var(--border);
+      font-size: .85rem; font-weight: 600; color: var(--ink);
+      padding: 6px 14px; border-radius: 50px;
+    }
+    .cred-chip i { color: var(--sky); font-size: .85rem; }
+    @media (max-width: 780px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ── GALLERY ── */
+    .gallery-section { background: var(--bone); }
+    .gallery-header { max-width: 600px; margin-bottom: 48px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      gap: 12px;
+    }
+    .g-item { border-radius: var(--radius); overflow: hidden; position: relative; }
+    .g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+    .g-item:hover img { transform: scale(1.04); }
+    .g-1 { grid-column: span 7; grid-row: span 2; aspect-ratio: unset; min-height: 360px; }
+    .g-2 { grid-column: span 5; min-height: 172px; }
+    .g-3 { grid-column: span 5; min-height: 172px; }
+    .g-4 { grid-column: span 4; min-height: 220px; }
+    .g-5 { grid-column: span 4; min-height: 220px; }
+    .g-6 { grid-column: span 4; min-height: 220px; }
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .g-1,.g-2,.g-3,.g-4,.g-5,.g-6 { grid-column: span 1; min-height: 180px; }
+      .g-1 { grid-row: span 1; }
+    }
+
+    /* ── REVIEWS ── */
+    .reviews-section { background: var(--white); }
+    .reviews-header { max-width: 600px; margin-bottom: 56px; }
+    .review-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .review-card {
+      background: var(--bone); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px 28px;
+      display: flex; flex-direction: column; gap: 16px;
+      transition: box-shadow .25s, transform .2s;
+    }
+    .review-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .rc-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .rc-author { display: flex; align-items: center; gap: 12px; }
+    .rc-av {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--sky); color: #fff;
+      font-weight: 800; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .rc-name { font-weight: 700; font-size: .95rem; }
+    .rc-time { font-size: .78rem; color: var(--muted); margin-top: 1px; }
+    .rc-stars { color: var(--gold); font-size: 1rem; letter-spacing: 1px; }
+    .rc-text { font-size: .93rem; color: #374151; line-height: 1.75; flex: 1; }
+    .rc-source { font-size: .75rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .rc-source svg { flex-shrink: 0; }
+
+    /* ── LEAVE REVIEW CTA ── */
+    .leave-review {
+      background: linear-gradient(135deg, var(--sky-l) 0%, #e0f2fe 100%);
+      border-top: 1px solid #bae6fd; border-bottom: 1px solid #bae6fd;
+      padding: 64px 24px; text-align: center;
+    }
+    .lr-inner { display: inline-flex; flex-direction: column; align-items: center; gap: 14px; }
+    .lr-stars { color: var(--gold); font-size: 1.5rem; letter-spacing: 4px; }
+    .lr-heading { font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 800; color: var(--ink); }
+    .lr-sub { font-size: .95rem; color: var(--muted); max-width: 400px; line-height: 1.7; }
+    .lr-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--sky); color: #fff; font-weight: 700; font-size: .95rem;
+      padding: 13px 28px; border-radius: 50px; margin-top: 6px;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 18px rgba(14,165,233,.3);
+    }
+    .lr-btn:hover { background: var(--sky-d); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(14,165,233,.4); }
+
+    /* ── CTA SECTION ── */
+    .cta-section {
+      background: var(--ink); padding: 100px 24px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(14,165,233,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section .sec-label { color: var(--sky); background: rgba(14,165,233,.15); }
+    .cta-section .sec-title { color: #fff; max-width: 600px; margin: 0 auto 16px; }
+    .cta-section p { color: rgba(255,255,255,.6); font-size: 1rem; margin-bottom: 36px; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #fff; color: var(--ink); font-weight: 700; font-size: 1rem;
+      padding: 14px 28px; border-radius: 50px;
+      transition: transform .15s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(255,255,255,.2);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,255,255,.25); }
+    .btn-outline-white {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; border: 1.5px solid rgba(255,255,255,.3); color: #fff;
+      font-weight: 600; font-size: 1rem;
+      padding: 14px 28px; border-radius: 50px;
+      transition: background .2s, transform .15s;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,.08); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060e1c; color: rgba(255,255,255,.55);
+      padding: 48px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;
+      padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-brand .nav-wordmark strong { color: #fff; }
+    .footer-brand .nav-wordmark span { color: rgba(255,255,255,.4); }
+    .footer-brand p { font-size: .85rem; margin-top: 12px; line-height: 1.7; max-width: 240px; }
+    .footer-col h4 { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.3); margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: .88rem; color: rgba(255,255,255,.55); margin-bottom: 10px; transition: color .2s; }
+    .footer-col a:hover { color: var(--sky); }
+    .footer-col .footer-contact-item { display: flex; align-items: center; gap: 10px; font-size: .88rem; margin-bottom: 12px; }
+    .footer-col .footer-contact-item i { color: var(--sky); width: 16px; }
+    .footer-bottom {
+      max-width: 1120px; margin: 28px auto 0;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom span { font-size: .82rem; }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.5); font-size: .9rem;
+      transition: background .2s, color .2s;
+    }
+    .footer-social a:hover { background: var(--sky); color: #fff; border-color: var(--sky); }
+    @media (max-width: 700px) {
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════ INTRO ═══════ -->
+<div id="intro">
+  <div class="intro-logo">
+    <svg width="160" height="44" viewBox="0 0 160 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Window icon -->
+      <rect x="0" y="2" width="40" height="40" rx="6" fill="#0ea5e9" opacity=".12"/>
+      <rect x="4" y="6" width="32" height="32" rx="4" fill="none" stroke="#0ea5e9" stroke-width="2.5"/>
+      <line x1="4" y1="16" x2="36" y2="16" stroke="#0ea5e9" stroke-width="2"/>
+      <line x1="20" y1="6" x2="20" y2="38" stroke="#0ea5e9" stroke-width="2"/>
+      <!-- Text -->
+      <text x="50" y="19" font-family="Inter,sans-serif" font-weight="800" font-size="13" fill="#0f172a" letter-spacing="-0.3">CLEAN &amp; CLEAR</text>
+      <text x="50" y="33" font-family="Inter,sans-serif" font-weight="500" font-size="9.5" fill="#64748b" letter-spacing="1.5">BY CLIFF</text>
+    </svg>
+  </div>
+  <div class="intro-tagline">Professional Window Cleaning · Washington</div>
+  <div class="intro-bar"></div>
+</div>
+
+<!-- ═══════ NAV ═══════ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="36" height="36" rx="7" fill="#0ea5e9" opacity=".1"/>
+      <rect x="5" y="5" width="26" height="26" rx="4" fill="none" stroke="#0ea5e9" stroke-width="2.2"/>
+      <line x1="5" y1="14" x2="31" y2="14" stroke="#0ea5e9" stroke-width="1.8"/>
+      <line x1="18" y1="5" x2="18" y2="31" stroke="#0ea5e9" stroke-width="1.8"/>
+    </svg>
+    <div class="nav-wordmark">
+      <strong>Clean &amp; Clear by Cliff</strong>
+      <span>Window Cleaning · Washington</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a>
+  </div>
+  <a href="tel:2533500457" class="nav-call">
+    <i class="fa-solid fa-phone"></i> (253) 350-0457
+  </a>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge reveal"><i class="fa-solid fa-star"></i> 5.0 Rating · 16 Google Reviews</div>
+    <h1 class="reveal d1">Windows That <em>Sparkle.</em><br>Service You'll Trust.</h1>
+    <p class="hero-sub reveal d2">Professional window cleaning for homes and businesses across Washington — with 32 years of experience, guaranteed satisfaction, and 24/7 scheduling.</p>
+    <div class="hero-btns reveal d3">
+      <a href="tel:2533500457" class="btn-primary"><i class="fa-solid fa-phone"></i> Call for a Free Quote</a>
+      <a href="#services" class="btn-ghost"><i class="fa-solid fa-list"></i> View Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ GOOGLE MAPS REVIEWS BAND ═══════ -->
+<div class="gmaps-band">
+  <div class="gmaps-inner">
+    <div class="gmaps-left">
+      <div class="gmaps-logo-wrap reveal">
+        <!-- Google G SVG -->
+        <svg viewBox="0 0 24 24" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        <span>Google Reviews</span>
+      </div>
+      <div class="gmaps-divider reveal d1"></div>
+      <div class="gmaps-score reveal d2">
+        <div class="gmaps-num">5.0</div>
+        <div>
+          <div class="gmaps-stars">★★★★★</div>
+          <div class="gmaps-count">16 reviews</div>
+        </div>
+      </div>
+      <div class="gmaps-divider reveal d2"></div>
+      <div class="gmaps-quote reveal d3">
+        "My windows are sparkling!!! Cliff does an amazing job — prompt, friendly, and very hard working."
+        <span>— Holly B. · 3 weeks ago</span>
+      </div>
+    </div>
+    <a href="https://www.google.com/maps/place/Clean+%26+Clear+by+Cliff/@47.1660189,-122.1046286,42151m/data=!4m6!3m5!1s0x5490fa0da7e4d6ed:0x89b2266998aa93f2!8m2!3d47.1660189!4d-122.1046286!16s%2Fg%2F1ygb86ctc"
+       target="_blank" rel="noopener" class="gmaps-btn reveal d4">
+      <i class="fa-brands fa-google"></i> See All Reviews
+    </a>
+  </div>
+</div>
+
+<!-- ═══════ STATS ═══════ -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-cell reveal">
+      <div class="stat-num">32+</div>
+      <div class="stat-label">Years in Business</div>
+    </div>
+    <div class="stat-cell reveal d1">
+      <div class="stat-num">5.0</div>
+      <div class="stat-label">Google Rating</div>
+    </div>
+    <div class="stat-cell reveal d2">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Satisfaction Guaranteed</div>
+    </div>
+    <div class="stat-cell reveal d3">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Available to Book</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ SERVICES ═══════ -->
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="services-header">
+      <div class="sec-label reveal">What We Do</div>
+      <h2 class="sec-title reveal d1">Every Service, Perfectly Done</h2>
+      <p class="sec-sub reveal d2">From single-family homes to commercial storefronts — we handle it all with professional-grade equipment and 32 years of know-how.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card reveal">
+        <div class="svc-icon"><i class="fa-solid fa-house"></i></div>
+        <div class="svc-name">Residential Window Washing</div>
+        <p class="svc-desc">Give your home's windows a new life. We use professional cleaning products that keep your windows cleaner, longer — guaranteed.</p>
+      </div>
+      <div class="svc-card reveal d1">
+        <div class="svc-icon"><i class="fa-solid fa-building"></i></div>
+        <div class="svc-name">Commercial Window Washing</div>
+        <p class="svc-desc">Offices, storefronts, and commercial buildings — clean windows make lasting first impressions. We keep your business looking sharp.</p>
+      </div>
+      <div class="svc-card reveal d2">
+        <div class="svc-icon"><i class="fa-solid fa-border-all"></i></div>
+        <div class="svc-name">Screen Washing</div>
+        <p class="svc-desc">Dirty screens block light and trap allergens. Our professional equipment transforms grimy screens into bright, like-new condition.</p>
+      </div>
+      <div class="svc-card reveal d3">
+        <div class="svc-icon"><i class="fa-solid fa-star"></i></div>
+        <div class="svc-name">Christmas Light Hanging</div>
+        <p class="svc-desc">Safe, professional holiday light installation using proper tools — installed exactly how you want them, without the ladder risk.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAF3JK73CXUoFKbii75l7GL4CGZ2-taL_djDP215zIhd6-A_PIWvPzBSeCO52JATJFUpEwLcxrmP5Vc-ldDy2yr5oN0IYEtWNNI-33mECL9Cc5-NH8ljTpzoINn-i0mkgAgK_wCcGg=w1200-h900-k-no" alt="Clean & Clear by Cliff work" loading="lazy"/>
+        <div class="about-img-badge">
+          <div class="badge-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div>
+            <strong>Insured &amp; Bonded</strong>
+            <span>Family-owned · Washington</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="sec-label reveal">About Cliff</div>
+        <h2 class="sec-title reveal d1">32 Years of Making Windows Shine</h2>
+        <p class="reveal d2">Cliff has been professionally cleaning windows in Washington for over three decades. His approach is simple: use the best products, take the time to do it right, and guarantee every job.</p>
+        <p class="reveal d2">"We love cleaning your windows so they sparkle like diamonds — making your house stand out above all others."</p>
+        <p class="reveal d2">Whether it's a single home or a large commercial property, Cliff shows up on time, communicates clearly, and leaves your windows looking better than you thought possible.</p>
+        <div class="creds-list reveal d3">
+          <div class="cred-chip"><i class="fa-solid fa-check"></i> 32 Years Experience</div>
+          <div class="cred-chip"><i class="fa-solid fa-check"></i> Fully Insured</div>
+          <div class="cred-chip"><i class="fa-solid fa-check"></i> Bonded</div>
+          <div class="cred-chip"><i class="fa-solid fa-check"></i> Family Owned</div>
+          <div class="cred-chip"><i class="fa-solid fa-check"></i> Satisfaction Guaranteed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ GALLERY ═══════ -->
+<section class="gallery-section" id="gallery">
+  <div class="container">
+    <div class="gallery-header">
+      <div class="sec-label reveal">Our Work</div>
+      <h2 class="sec-title reveal d1">Results That Speak for Themselves</h2>
+      <p class="sec-sub reveal d2">Real jobs, real results. See the difference professional window cleaning makes.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item g-1 reveal">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFSrI_wLpfsE6-DkKocivGEQJS9CdFuLZ98p3kPR--Hg0W1hPaZh3IbaTOHvTn7dBgV7YOQou4GmgUtKAWXyIo_f1UBOCkW7yCvSubfORMd-FVsbhuDPlePAK7_hPl3XPtAICiISw=w1200-h900-k-no" alt="Professional window cleaning result" loading="lazy"/>
+      </div>
+      <div class="g-item g-2 reveal d1">
+        <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=800&q=80&fit=crop" alt="Clean windows" loading="lazy"/>
+      </div>
+      <div class="g-item g-3 reveal d2">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAF3JK73CXUoFKbii75l7GL4CGZ2-taL_djDP215zIhd6-A_PIWvPzBSeCO52JATJFUpEwLcxrmP5Vc-ldDy2yr5oN0IYEtWNNI-33mECL9Cc5-NH8ljTpzoINn-i0mkgAgK_wCcGg=w1200-h900-k-no" alt="Window cleaning service" loading="lazy"/>
+      </div>
+      <div class="g-item g-4 reveal">
+        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80&fit=crop" alt="Beautiful clean home" loading="lazy"/>
+      </div>
+      <div class="g-item g-5 reveal d1">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80&fit=crop" alt="Large home windows" loading="lazy"/>
+      </div>
+      <div class="g-item g-6 reveal d2">
+        <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=800&q=80&fit=crop" alt="Modern home exterior" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ REVIEWS ═══════ -->
+<section class="reviews-section" id="reviews">
+  <div class="container">
+    <div class="reviews-header">
+      <div class="sec-label reveal">5-Star Reviews</div>
+      <h2 class="sec-title reveal d1">What Washington Homeowners Say</h2>
+      <p class="sec-sub reveal d2">Every single Google review is 5 stars. Here's what Cliff's customers have to say.</p>
+    </div>
+    <div class="review-grid">
+      <div class="review-card reveal">
+        <div class="rc-top">
+          <div class="rc-author">
+            <div class="rc-av">H</div>
+            <div>
+              <div class="rc-name">Holly Bauermeister</div>
+              <div class="rc-time">3 weeks ago · Local Guide</div>
+            </div>
+          </div>
+          <div class="rc-stars">★★★★★</div>
+        </div>
+        <p class="rc-text">"My windows are sparkling!!! Cliff does an amazing job — he is prompt, friendly, and very hard working. Highly recommend!!!"</p>
+        <div class="rc-source">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          Google Review
+        </div>
+      </div>
+      <div class="review-card reveal d1">
+        <div class="rc-top">
+          <div class="rc-author">
+            <div class="rc-av">H</div>
+            <div>
+              <div class="rc-name">H Shelton</div>
+              <div class="rc-time">7 months ago</div>
+            </div>
+          </div>
+          <div class="rc-stars">★★★★★</div>
+        </div>
+        <p class="rc-text">"Cliff did a great job, paid attention to what I was asking for and provided cost-effective ways to do the job. He charged a reasonable amount for the work."</p>
+        <div class="rc-source">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          Google Review
+        </div>
+      </div>
+      <div class="review-card reveal d2">
+        <div class="rc-top">
+          <div class="rc-author">
+            <div class="rc-av">D</div>
+            <div>
+              <div class="rc-name">Diane Coulston</div>
+              <div class="rc-time">10 months ago</div>
+            </div>
+          </div>
+          <div class="rc-stars">★★★★★</div>
+        </div>
+        <p class="rc-text">"Clean and Clear by Cliff has done a great job on cleaning our windows and screens. We have utilized them for years. Would highly recommend them."</p>
+        <div class="rc-source">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          Google Review
+        </div>
+      </div>
+      <div class="review-card reveal d1">
+        <div class="rc-top">
+          <div class="rc-author">
+            <div class="rc-av">N</div>
+            <div>
+              <div class="rc-name">Natalie Barnes</div>
+              <div class="rc-time">Verified Customer</div>
+            </div>
+          </div>
+          <div class="rc-stars">★★★★★</div>
+        </div>
+        <p class="rc-text">"Cliff is the best. The most detailed, thorough window washer. And in addition, he's a really great guy!"</p>
+        <div class="rc-source">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          Verified Customer
+        </div>
+      </div>
+      <div class="review-card reveal d2">
+        <div class="rc-top">
+          <div class="rc-author">
+            <div class="rc-av">R</div>
+            <div>
+              <div class="rc-name">R. McLeod</div>
+              <div class="rc-time">Verified Customer</div>
+            </div>
+          </div>
+          <div class="rc-stars">★★★★★</div>
+        </div>
+        <p class="rc-text">"Cliff took on a difficult job for us. The windows in this home had been neglected for years — the results were phenomenal and his communication was excellent."</p>
+        <div class="rc-source">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          Verified Customer
+        </div>
+      </div>
+      <div class="review-card reveal d3">
+        <div class="rc-top">
+          <div class="rc-author">
+            <div class="rc-av">C</div>
+            <div>
+              <div class="rc-name">Carol &amp; Louis A.</div>
+              <div class="rc-time">Verified Customer</div>
+            </div>
+          </div>
+          <div class="rc-stars">★★★★★</div>
+        </div>
+        <p class="rc-text">"Awesome job — the house looks great! Would absolutely use Clean &amp; Clear by Cliff again without hesitation."</p>
+        <div class="rc-source">
+          <svg viewBox="0 0 24 24" width="14" height="14"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+          Verified Customer
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ LEAVE A REVIEW ═══════ -->
+<div class="leave-review">
+  <div class="lr-inner reveal">
+    <div class="lr-stars">★★★★★</div>
+    <h2 class="lr-heading">Happy with your service?</h2>
+    <p class="lr-sub">Leave Cliff a review on Google — it only takes 30 seconds and means everything to a small family business.</p>
+    <a href="https://www.google.com/maps/place/Clean+%26+Clear+by+Cliff/@47.1660189,-122.1046286,42151m/data=!4m6!3m5!1s0x5490fa0da7e4d6ed:0x89b2266998aa93f2!8m2!3d47.1660189!4d-122.1046286!16s%2Fg%2F1ygb86ctc"
+       target="_blank" rel="noopener" class="lr-btn">
+      <i class="fa-brands fa-google"></i> Leave a Google Review
+    </a>
+  </div>
+</div>
+
+<!-- ═══════ CTA ═══════ -->
+<section class="cta-section" id="contact">
+  <div style="position:relative;z-index:1;">
+    <div class="sec-label reveal">Free Estimates</div>
+    <h2 class="sec-title reveal d1">Ready for Crystal-Clear Windows?</h2>
+    <p class="reveal d2">Call Cliff today — available Monday through Friday, 7AM to 9PM. Free quotes, guaranteed satisfaction, 32 years of trust.</p>
+    <div class="cta-btns reveal d3">
+      <a href="tel:2533500457" class="btn-white"><i class="fa-solid fa-phone"></i> (253) 350-0457</a>
+      <a href="mailto:cliffmc598@gmail.com" class="btn-outline-white"><i class="fa-solid fa-envelope"></i> Send an Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:12px;">
+        <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="36" height="36" rx="7" fill="#0ea5e9" opacity=".15"/>
+          <rect x="5" y="5" width="26" height="26" rx="4" fill="none" stroke="#0ea5e9" stroke-width="2.2"/>
+          <line x1="5" y1="14" x2="31" y2="14" stroke="#0ea5e9" stroke-width="1.8"/>
+          <line x1="18" y1="5" x2="18" y2="31" stroke="#0ea5e9" stroke-width="1.8"/>
+        </svg>
+        <div class="nav-wordmark">
+          <strong>Clean &amp; Clear by Cliff</strong>
+          <span>Window Cleaning · Washington</span>
+        </div>
+      </div>
+      <p>Professional window cleaning for homes and businesses across Washington — with 32 years of experience and a 5.0 Google rating.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Residential Window Washing</a>
+      <a href="#services">Commercial Window Washing</a>
+      <a href="#services">Screen Washing</a>
+      <a href="#services">Christmas Light Hanging</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item"><i class="fa-solid fa-phone"></i> <a href="tel:2533500457">(253) 350-0457</a></div>
+      <div class="footer-contact-item"><i class="fa-solid fa-envelope"></i> <a href="mailto:cliffmc598@gmail.com">cliffmc598@gmail.com</a></div>
+      <div class="footer-contact-item"><i class="fa-solid fa-clock"></i> Mon–Fri · 7AM – 9PM</div>
+      <div class="footer-contact-item"><i class="fa-solid fa-location-dot"></i> Serving Washington State</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Clean &amp; Clear by Cliff. All rights reserved.</span>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/CleanClearByCliffWindowWashing" target="_blank" rel="noopener" title="Facebook">
+        <i class="fa-brands fa-facebook-f"></i>
+      </a>
+      <a href="https://www.google.com/maps/place/Clean+%26+Clear+by+Cliff/@47.1660189,-122.1046286,42151m/data=!4m6!3m5!1s0x5490fa0da7e4d6ed:0x89b2266998aa93f2!8m2!3d47.1660189!4d-122.1046286!16s%2Fg%2F1ygb86ctc" target="_blank" rel="noopener" title="Google Maps">
+        <i class="fa-brands fa-google"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for .reveal
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>
